@@ -20,6 +20,7 @@
     @yield('content')
 
     <!-- FOOTER -->
+    @include('_partials/footer')
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
