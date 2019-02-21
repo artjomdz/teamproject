@@ -20,4 +20,8 @@ Route::get ('/questions', 'QuestionController@index');
 
 Route::get ('/questions/{id}', 'QuestionController@show');
 
-Route::resource('admin/users', 'AdminUserController');
+Route::resource('home', 'AdminUserController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
