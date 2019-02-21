@@ -13,5 +13,8 @@
 
 
 Route::get('/categories', 'CategoryController@index');
+
 Route::get ('/questions', 'QuestionController@index');
+// Route::get ('/answers', 'QuestionController@show');
+
 Route::get ('/questions/{id}', 'QuestionController@show');
