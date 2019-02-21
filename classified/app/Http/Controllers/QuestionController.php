@@ -11,11 +11,9 @@ class QuestionController extends Controller
 {
     public function index () {
         // $res = DB::table('questions')->get();
-        $res = Question::all();
+        $allQuestions = Question::all();
         
-        
-        dd($res);
-        // return 'This is a list of questions';
+        return view('index')->with('questions', $allQuestions);
     }
 
     public function show ($id)
@@ -23,13 +21,20 @@ class QuestionController extends Controller
         // $res = DB::table('answers')->where('question_id', $id)->get();
         // dd($id);
         $question = Question::find($id);
+        $responses = Question::count();
+        // dd($responses);
+
+        // dd($question);
 
 
         // $answers = Answer::where('question_id', $id)->get();
         $answers = $question->answers()->oldest()->get();
-        // dd(Question::answer());
+        
 
-        dd($answers);
-        // return 'This is a detail of a question';
+        return view('_partials/show', [
+            'question' => $question, 
+            'answerList' => $answers,
+            'responsCount' => $responses
+            ]);
     }
 }
