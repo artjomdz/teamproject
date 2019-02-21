@@ -12,6 +12,7 @@
 */
 
 
+Route::get('/', 'CategoryController@index');
 Route::get('/categories', 'CategoryController@index');
 
 Route::get ('/questions', 'QuestionController@index');
