@@ -1,7 +1,5 @@
 @extends('welcome')
-@php
-    // dd($question)
-@endphp
+
 @section('content')
     <section id="banner" class="banner-sm">
         <div class="container">
@@ -32,12 +30,20 @@
             <div class="question-right">
                 <h2>{{ $question->title }}</h2>
                 <p>{{ $question->text }}</p>
-            </div>
+                <form action="/questions/addReply{{ $id }}" method="post">
+                    @csrf
+                    <div class="form-group">
+                        <label for="answer">Submit Your Answer</label>
+                        <textarea name="answer_text" class="form-control" id="answer" rows="3"></textarea>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+                </div>
         </div>
     </section>
 
     <section id="answers">
-
+    @foreach ($answers as $answer)
         <div class="container">
             <h2>12 Answers</h2>
             <div class="answer">
@@ -59,11 +65,11 @@
                     </div>
                 </div>
                 <div class="answer-right">
-                    <p></p>
+                    {{ $answer->text }}
                 </div>
             </div>
 
         </div>
-
+    @endforeach
     </section>
 @endsection

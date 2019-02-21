@@ -18,7 +18,11 @@ Route::get('/categories', 'CategoryController@index');
 
 Route::get ('/questions', 'QuestionController@index');
 
+
+
 Route::get ('/questions/{id}', 'QuestionController@show');
+Route::post('/questions/addReply{id}', 'QuestionController@submitAnswer');
+
 
 Route::resource('home', 'AdminUserController');
 

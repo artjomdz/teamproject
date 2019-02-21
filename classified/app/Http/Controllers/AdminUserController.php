@@ -35,12 +35,14 @@ class AdminUserController extends Controller
      */
     public function store(Request $request)
     {
-        // // $question = new ;
-        // $user->title = request->input('title');
-        // $user->save();
         $user_id = \Auth::id();
-        // dd($request->input('title'));
-        dd($user_id);
+
+        $question = new Question;
+        $question->title = $request->input('title');
+        $question->text = $request->input('question_body');
+        $question->user_id = $user_id;
+        $question->save();
+        return redirect('/');
     }
 
     /**

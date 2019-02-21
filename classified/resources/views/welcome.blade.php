@@ -17,7 +17,7 @@
 <body>
 
     @include('_partials/nav')
-
+    @include('_partials/messages')
     @yield('content')
 
     <!-- FOOTER -->
