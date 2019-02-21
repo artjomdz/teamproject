@@ -32,7 +32,7 @@ class QuestionController extends Controller
         $answers_to_question = Answer::where('user_id', '=', $user);
         // $user = User::where('id', '=', $id);
         // dd($user);
-        dd($answers_to_question);
+        // dd($answers_to_question);
         return view('_partials/show', 
         compact(
                 'question', 
