@@ -27,11 +27,12 @@ class QuestionController extends Controller
         $question = Question::find($id);
         $responses = Question::count();
         $user = \Auth::id();
+        $name = \Auth::user()->name;
         $answers = Answer::where('question_id', $id)->get();
         // $answers = $question->answers()->oldest()->get();
         $answers_to_question = Answer::where('user_id', '=', $user);
-        // $user = User::where('id', '=', $id);
-        // dd($user);
+        $user = User::all()->where('id', '=', $id);
+        // dd($name);
         // dd($answers_to_question);
         return view('_partials/show', 
         compact(
@@ -39,7 +40,8 @@ class QuestionController extends Controller
                 'responses', 
                 'answers',
                 'id',
-                'answers_to_question')
+                'answers_to_question',
+                'name')
             );
     }
 
