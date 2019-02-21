@@ -22,19 +22,13 @@ class QuestionController extends Controller
         // dd($id);
         $question = Question::find($id);
         $responses = Question::count();
-        // dd($responses);
-
-        // dd($question);
+        
 
 
         // $answers = Answer::where('question_id', $id)->get();
         $answers = $question->answers()->oldest()->get();
         
 
-        return view('_partials/show', [
-            'question' => $question, 
-            'answerList' => $answers,
-            'responsCount' => $responses
-            ]);
+        return view('_partials/show', compact('question', 'responses', 'answers'));
     }
 }

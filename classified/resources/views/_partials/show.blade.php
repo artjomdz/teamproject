@@ -1,5 +1,7 @@
 @extends('welcome')
-
+@php
+    // dd($question)
+@endphp
 @section('content')
     <section id="banner" class="banner-sm">
         <div class="container">
@@ -17,7 +19,7 @@
                 <div class="user-name">John Doe</div>
                 <div class="user-stats">
                     <div class="user-stat">
-                        <span>{{ $responsCount }}</span>
+                        <span>{{ $responses }}</span>
                         <label>responses</label>
                     </div>
                     <div class="user-stat">
@@ -57,9 +59,7 @@
                     </div>
                 </div>
                 <div class="answer-right">
-                    <p>I also tried using pymysql (on my Win7 x64 machine, Python 3.3), without too much luck. I downloaded
-                        the .tar.gz, extract, ran "setup.py install", and everything seemed fine. Until I tried connecting
-                        to a database, and got "KeyError [56]". An error which I was unable to find documented anywhere.</p>
+                    <p></p>
                 </div>
             </div>
 

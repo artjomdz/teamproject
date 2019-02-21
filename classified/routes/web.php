@@ -13,9 +13,11 @@
 
 
 Route::get('/', 'QuestionController@index');
+
 Route::get('/categories', 'CategoryController@index');
 
 Route::get ('/questions', 'QuestionController@index');
-// Route::get ('/answers', 'QuestionController@show');
 
 Route::get ('/questions/{id}', 'QuestionController@show');
+
+Route::resource('admin/users', 'AdminUserController');
