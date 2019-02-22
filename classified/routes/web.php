@@ -20,9 +20,9 @@ Route::get ('/questions', 'QuestionController@index');
 
 
 
-Route::get ('/questions/{id}', 'QuestionController@show');
-Route::post('/answers/vote/{id}', 'QuestionController@vote');
-Route::post('/questions/addReply/{id}', 'QuestionController@submitAnswer');
+Route::get ('/questions/{id}', 'QuestionController@show')->name('questions.all');
+Route::post('/answers/vote/{id}', 'QuestionController@vote')->name('answers.vote');
+Route::post('/questions/addReply/{id}', 'QuestionController@submitAnswer')->name('add.reply');
 
 
 Route::resource('home', 'AdminUserController');

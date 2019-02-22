@@ -16,4 +16,9 @@ class Answer extends Model
     {
         return $this->hasMany('App\Vote');
     }
+
+    public function user()
+    {
+        return $this->hasOne('App\User');
+    }
 }

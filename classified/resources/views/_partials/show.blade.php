@@ -32,7 +32,7 @@
             <div class="question-right">
                 <h2>{{ $question->title }}</h2>
                 <p>{{ $question->text }}</p>
-                <form action="/questions/addReply/{{ $id }}" method="post">
+                <form action="{{ route('add.reply', $id) }}" method="post">
                     @csrf
                     <div class="form-group">
                         <label for="answer">Submit Your Answer</label>
@@ -73,9 +73,8 @@
                 <div class="votes">
                     <span>Rating:</span> <!-- the `rating` column in the answer -->
      
-                    <form action="/answers/vote/{{ $answer->id }}" method="post">
+                    <form action="{{ route('answers.vote', $answer->id)  }}" method="post">
                         @csrf
-     
                         <input type="submit" name="up" value="+1">
                         <input type="submit" name="down" value="-1">
      
