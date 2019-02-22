@@ -1,5 +1,7 @@
 @extends('welcome')
 
+
+
 @section('content')
     <section id="banner" class="banner-sm">
         <div class="container">
@@ -30,11 +32,12 @@
             <div class="question-right">
                 <h2>{{ $question->title }}</h2>
                 <p>{{ $question->text }}</p>
-                <form action="/questions/addReply{{ $id }}" method="post">
+                <form action="/questions/addReply/{{ $id }}" method="post">
                     @csrf
                     <div class="form-group">
                         <label for="answer">Submit Your Answer</label>
                         <textarea name="answer_text" class="form-control" id="answer" rows="3"></textarea>
+                        <br>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </form>
@@ -66,6 +69,17 @@
                 </div>
                 <div class="answer-right">
                     {{ $answer->text }}
+                </div>
+                <div class="votes">
+                    <span>Rating:</span> <!-- the `rating` column in the answer -->
+     
+                    <form action="/answers/vote/{{ $answer->id }}" method="post">
+                        @csrf
+     
+                        <input type="submit" name="up" value="+1">
+                        <input type="submit" name="down" value="-1">
+     
+                    </form>
                 </div>
             </div>
 
