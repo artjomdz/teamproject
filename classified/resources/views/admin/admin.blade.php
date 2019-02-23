@@ -24,5 +24,6 @@
                 <h1>{{ $question->title }}</h1>
             @endforeach
         </div>
+        @include('_partials.form')
     </div>
 @endsection

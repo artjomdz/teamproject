@@ -24,7 +24,6 @@
                             <a href="/questions/{{ $question->id }}">{{ $question->title }}</a>
                         </div>
                         <div class="question-info">
-                                {{-- $answers = $question->answers()->with('user')->oldest()->get(); --}}
                             {{ $question->created_at }} <a href="">{{ $question->user->name }}</a>
                         </div>
                     </div>

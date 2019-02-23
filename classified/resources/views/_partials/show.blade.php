@@ -62,7 +62,7 @@
                             <label>responses</label>
                         </div>
                         <div class="user-stat">
-                            <span>5</span>
+                            <span>{{ $answer->votes()->count() }}</span>
                             <label>votes</label>
                         </div>
                     </div>
@@ -72,7 +72,6 @@
                 </div>
                 <div class="votes">
                     <span>Rating:</span> <!-- the `rating` column in the answer -->
-     
                     <form action="{{ route('answers.vote', $answer->id)  }}" method="post">
                         @csrf
                         <input type="submit" name="up" value="+1">

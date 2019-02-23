@@ -13,11 +13,16 @@
     <title>{{ config('app.name', 'Q&A') }}</title>
 </head>
 <body>
-
+    
     @include('_partials/nav')
     @include('_partials/messages')
 
+
+
     @yield('content')
+
+
+
 
     <!-- FOOTER -->
     @include('_partials/footer')

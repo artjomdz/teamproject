@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 // use DB;
 use App\Question;
 use App\Answer;
+use App\Vote;
 
 
 class QuestionController extends Controller
@@ -13,6 +14,7 @@ class QuestionController extends Controller
     public function index () {
         // $res = DB::table('questions')->get();
         $allQuestions = Question::all();
+
         
         return view('questionList')->with('questions', $allQuestions);
     }
@@ -24,10 +26,11 @@ class QuestionController extends Controller
         $question = Question::find($id);
         $responses = Question::count();
 
-        // $anser = Answer
+        // $answer = Answer::find(9);
+        // $answerRating = $answer->votes;
+        // // dd($answerRating->count());
+
         $name = $question->user->name;
-
-
 
         $answers = $question->answers()->with('user:id,name')->oldest()->get();
 
@@ -43,14 +46,38 @@ class QuestionController extends Controller
     public function submitAnswer (Request $request, $id)
     {
         $answer = new Answer;
-        // $answer->user_id = \Auth::user()->name;
         
         $answer->text = $request->input('answer_text');
         $answer->question_id = $id;
         $answer->user_id = \Auth::id();
         $answer->save();
 
-        redirect()->route('questions.all', $id);
+        return redirect()->route("questions.all", ['id' => $id]);
 
     }
-}
+
+    public function vote ($answer_id)
+    {
+        $request = request();
+        
+        $answer = Answer::find($answer_id);
+        
+        $vote = new Vote;
+        $vote->answer_id = $answer->id;
+        
+        if ($request->input('up')) {
+            $vote->vote = 1;
+            $answer->rating++; 
+        } elseif($request->input('down')) {
+            $vote->vote = -1;
+            $answer->rating--; 
+        }
+        
+
+
+        $vote->save();
+        $answer->save();
+        
+        return back();
+            }
+    }
