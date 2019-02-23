@@ -11,25 +11,25 @@
 
     <section id="questions">
         <div class="container">
-
-            <div class="question">
-                @foreach ($questions as $question)    
+            @foreach ($questions as $question)
+                <div class="question">
                     <div class="question-left">
-                            <div class="question-stat">
-                                <span>{{ $question->title }}</span>
-                                <label>responses</label>
-                            </div>
+                        <div class="question-stat">
+                            <span>{{ $question->title }}</span>
+                            <label>responses</label>
                         </div>
-                        <div class="question-right">
-                            <div class="question-name">
-                                <a href="/questions/{{ $question->id }}">{{ $question->title }}</a>
-                            </div>
-                            <div class="question-info">
-                                {{ $question->created_at }} <a href="">slavo</a>
-                            </div>
+                    </div>
+                    <div class="question-right">
+                        <div class="question-name">
+                            <a href="/questions/{{ $question->id }}">{{ $question->title }}</a>
                         </div>
-                    @endforeach
-            </div>
+                        <div class="question-info">
+                                {{-- $answers = $question->answers()->with('user')->oldest()->get(); --}}
+                            {{ $question->created_at }} <a href="">{{ $question->user->name }}</a>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
         </div>
     </section>
 @endsection

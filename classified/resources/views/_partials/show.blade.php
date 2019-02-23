@@ -55,7 +55,7 @@
                         <img class="img-fluid"
                             src="http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/user-male-icon.png"/>
                     </div>
-                    <div class="user-name">{{$name}}</div>
+                    <div class="user-name">{{ $answer->user->name }}</div>
                     <div class="user-stats">
                         <div class="user-stat">
                             <span>3</span>

@@ -23,20 +23,21 @@ class QuestionController extends Controller
         // dd($id);
         $question = Question::find($id);
         $responses = Question::count();
+
+        // $anser = Answer
         $name = $question->user->name;
-        
-        
-        // $answers = Answer::where('question_id', $id)->get();
-        $answers = $question->answers()->oldest()->get();
-        
+
+
+
+        $answers = $question->answers()->with('user:id,name')->oldest()->get();
 
         return view('_partials/show', compact(
-            'question', 
-            'responses', 
-            'answers',
-            'id', 
-            'name'
-            ));
+                                        'question', 
+                                        'responses', 
+                                        'answers',
+                                        'id', 
+                                        'name'
+                                        ));
     }
 
     public function submitAnswer (Request $request, $id)
