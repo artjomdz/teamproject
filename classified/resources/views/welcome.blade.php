@@ -9,20 +9,21 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <!-- STYLESHEET -->
-    <link rel="stylesheet" href="/css/main.css">
-
-    <title>Page title</title>
-
+    <link href="{{ asset('/css/main.css') }}" rel="stylesheet">
+    <title>{{ config('app.name', 'Q&A') }}</title>
 </head>
 <body>
 
     @include('_partials/nav')
     @include('_partials/messages')
+
     @yield('content')
 
     <!-- FOOTER -->
     @include('_partials/footer')
 
+    
+    
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

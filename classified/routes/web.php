@@ -12,7 +12,7 @@
 */
 
 
-Route::get('/', 'QuestionController@index');
+Route::get('/', 'QuestionController@index')->name('home.view');
 
 Route::get('/categories', 'CategoryController@index');
 
@@ -29,4 +29,4 @@ Route::resource('home', 'AdminUserController');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('admin.page');

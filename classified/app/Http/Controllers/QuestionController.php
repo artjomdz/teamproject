@@ -14,7 +14,7 @@ class QuestionController extends Controller
         // $res = DB::table('questions')->get();
         $allQuestions = Question::all();
         
-        return view('index')->with('questions', $allQuestions);
+        return view('questionList')->with('questions', $allQuestions);
     }
 
     public function show ($id)
