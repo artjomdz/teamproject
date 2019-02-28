@@ -1,7 +1,5 @@
 @extends('welcome')
-@php
-    // dd($questions)
-@endphp
+
 @section('content')
     <section id="banner">
         <div class="container">
@@ -11,7 +9,7 @@
 
     <section id="questions">
         <div class="container">
-            @foreach ($questions as $question)
+            @foreach ($allQuestions as $question)
                 <div class="question">
                     <div class="question-left">
                         <div class="question-stat">

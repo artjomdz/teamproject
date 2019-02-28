@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddVoteToVotesTable extends Migration
+class AddIsAdminToUsers extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddVoteToVotesTable extends Migration
      */
     public function up()
     {
-        Schema::table('votes', function (Blueprint $table) {
-            $table->integer('vote')->unsigned()->nullable()->default(0);
+        Schema::table('users', function (Blueprint $table) {
+            $table->boolean('is_admin')->default(false);
         });
     }
 
@@ -25,8 +25,8 @@ class AddVoteToVotesTable extends Migration
      */
     public function down()
     {
-        Schema::table('votes', function (Blueprint $table) {
-            $table->dropColumn('vote');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('is_admin');
         });
     }
 }

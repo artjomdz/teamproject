@@ -12,23 +12,17 @@ use App\Vote;
 class QuestionController extends Controller
 {
     public function index () {
-        // $res = DB::table('questions')->get();
+        
         $allQuestions = Question::all();
 
-        
-        return view('questionList')->with('questions', $allQuestions);
+        $this->middleware('auth')->except('index');
+        return view('questionList', compact(['allQuestions']));
     }
 
     public function show ($id)
     {
-        // $res = DB::table('answers')->where('question_id', $id)->get();
-        // dd($id);
         $question = Question::find($id);
         $responses = Question::count();
-
-        // $answer = Answer::find(9);
-        // $answerRating = $answer->votes;
-        // // dd($answerRating->count());
 
         $name = $question->user->name;
 

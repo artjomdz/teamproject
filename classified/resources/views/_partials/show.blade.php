@@ -32,15 +32,18 @@
             <div class="question-right">
                 <h2>{{ $question->title }}</h2>
                 <p>{{ $question->text }}</p>
-                <form action="{{ route('add.reply', $id) }}" method="post">
-                    @csrf
-                    <div class="form-group">
-                        <label for="answer">Submit Your Answer</label>
-                        <textarea name="answer_text" class="form-control" id="answer" rows="3"></textarea>
-                        <br>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </div>
-                </form>
+                @auth
+                <h4>Submit Your Answer</h4>
+                    <form action="{{ route('add.reply', $id) }}" method="post">
+                        @csrf
+                        <div class="form-group">
+                            <label for="answer">Submit Your Answer</label>
+                            <textarea name="answer_text" class="form-control" id="answer" rows="3"></textarea>
+                            <br>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+                @endauth
                 </div>
         </div>
     </section>
@@ -62,21 +65,23 @@
                             <label>responses</label>
                         </div>
                         <div class="user-stat">
-                            <span>{{ $answer->votes()->count() }}</span>
+                            <span>{{ $answer->rating }}</span>
                             <label>votes</label>
                         </div>
                     </div>
+                    @can('admin')
+                        <div class="btn btn-danger">Delete</div>
+                    @endcan
                 </div>
                 <div class="answer-right">
                     {{ $answer->text }}
                 </div>
                 <div class="votes">
                     <span>Rating:</span> <!-- the `rating` column in the answer -->
-                    <form action="{{ route('answers.vote', $answer->id)  }}" method="post">
+                    <form action="{{ action('QuestionController@vote', $answer->id)  }}" method="post">
                         @csrf
                         <input type="submit" name="up" value="+1">
                         <input type="submit" name="down" value="-1">
-     
                     </form>
                 </div>
             </div>
